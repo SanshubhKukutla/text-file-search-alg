@@ -21,10 +21,19 @@ var txtFile = document
 
 //code for search btn
 var searchBarTxt = document.getElementById("searchBar");
+searchBarTxt.addEventListener("keydown", check)
+
+function check(e){
+  if(e.key === "Enter"){
+    searchActivity();
+  }
+}
+
 
 function searchActivity(){
   clearInput();
   searchFile();
+ 
 }
 
 function clearInput() {
@@ -34,6 +43,44 @@ function clearInput() {
 
 function searchFile() {
   //alert("search")
-  console.log("searching");
+  //console.log("searching");
 }
+
+let lines = []
+function updateLines(text) {
+  let line = "";
+  for (let i = 0; i < text.length; i++) {
+      if (text[i] == "/n") {
+        lines.append(line);
+        line = "";
+      }
+      else {
+        line += text[i];
+      }
+  }
+}
+
+
+//reading a file
+
+document.getElementById('inputfile')
+.addEventListener('change', function() {
+  
+  var fr=new FileReader();
+  fr.onload=function(){
+    document.getElementById('output')
+    .textContent=fr.result;
+    updateLines(fr.result);
+    console.log(fr.result);
+    console.log(lines);
+  }
+  
+  fr.readAsText(this.files[0]);
+})
+
+//search key to file 
+
+
+
+
 
