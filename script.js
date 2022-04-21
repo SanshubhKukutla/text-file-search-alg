@@ -33,7 +33,6 @@ function check(e){
 function searchActivity(){
   clearInput();
   searchFile();
- 
 }
 
 function clearInput() {
@@ -50,16 +49,18 @@ let lines = []
 function updateLines(text) {
   let line = "";
   for (let i = 0; i < text.length; i++) {
+    console.log(text[i], " ", lines);
       if (text[i] == "/n") {
-        lines.append(line);
+        lines.push(line);
+        console.log(line);
         line = "";
       }
       else {
         line += text[i];
       }
   }
+  console.log(lines);
 }
-
 
 //reading a file
 
@@ -70,9 +71,9 @@ document.getElementById('inputfile')
   fr.onload=function(){
     document.getElementById('output')
     .textContent=fr.result;
-    updateLines(fr.result);
-    console.log(fr.result);
     console.log(lines);
+    updateLines(fr.result); 
+    console.log("called");
   }
   
   fr.readAsText(this.files[0]);
