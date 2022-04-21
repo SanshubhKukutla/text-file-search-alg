@@ -49,13 +49,13 @@ let lines = []
 function updateLines(text) {
   let line = "";
   for (let i = 0; i < text.length; i++) {
-    console.log(text[i], " ", lines);
-      if (text[i] == "/n") {
+      if (text[i] == "\n") {
         lines.push(line);
         console.log(line);
         line = "";
       }
-      else {
+    // We don't want the return characters
+      else if (text[i] != "\r") {
         line += text[i];
       }
   }
