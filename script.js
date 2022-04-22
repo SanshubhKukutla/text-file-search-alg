@@ -45,15 +45,14 @@ function clearInput() {
     if (line.search(searchBarTxt.value) != -1) {
       legitLines.push(lineIndex);
       newHTML += "<a id= \"" + lineIndex + "\" class=\"line-highlighted\">" + lines[lineIndex] + "<a>";
-
     }
 
     else {
       newHTML += "<a id=\" " + lineIndex + "\" class=\"line\">" + lines[lineIndex] + "<a>";
     }
     document.getElementById("output").innerHTML = newHTML;
-
   }
+  console.log("DONE");
 
   searchBarTxt.value = null;
 }
