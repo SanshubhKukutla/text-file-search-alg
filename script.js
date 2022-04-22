@@ -37,18 +37,21 @@ function searchActivity(){
 function clearInput() {
 
 
-  legit_lines = []
-  for (line_index in lines) {
-    console.log(document.getElementById(lineIndex).classList);
-    // document.getElementById(lineIndex).classList.remove("highlighted");
-  }
-
-  for (line_index in lines) {
-    let line = lines[line_index]
+  legitLines = []
+  let newHTML = "";
+  for (lineIndex in lines) {
+    let line = lines[lineIndex]
     if (line.search(searchBarTxt.value) != -1) {
-      document.getElementById(line_index).classList.add("highlighted");
-      console.log(document.getElementById(line_index).classList)
+      legitLines.push(lineIndex);
+      newHTML += "<a id= \"" + lineIndex + "\" class=\"line highlighted\">" + lines[lineIndex] + "<a>";
+
     }
+
+    else {
+      newHTML += "<a id=\" " + lineIndex + "\" class=\"line\">" + lines[lineIndex] + "<a>";
+    }
+    document.getElementById("output").innerHTML = newHTML;
+
   }
 
   searchBarTxt.value = null;
@@ -60,8 +63,9 @@ function searchFile() {
 }
 
 var lines = []
-var legit_lines = []
+var legitLines = []
 function updateLines(text) {
+  lines = [];
   let line = "";
   for (let i = 0; i < text.length; i++) {
       if (text[i] == "\n") {
