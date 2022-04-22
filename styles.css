@@ -12,7 +12,6 @@
 }
 
 .line, .line-highlighted{
-    width: 200px;
     font-family: kumbah-sans;
     font-size: large;
     height: fit-content;
@@ -24,3 +23,4 @@
 .line-highlighted{
   background-color: #FFFF00;
 }
+
