@@ -1,6 +1,5 @@
 // store a reference to our file handle
 
-console.log("here");
 
 let fileHandle;
 
@@ -37,17 +36,21 @@ function searchActivity(){
 
 function clearInput() {
 
-  console.log(searchBarTxt.value);
+
   legit_lines = []
+  for (line_index in lines) {
+    console.log(document.getElementById(lineIndex).classList);
+    // document.getElementById(lineIndex).classList.remove("highlighted");
+  }
 
   for (line_index in lines) {
     let line = lines[line_index]
-    console.log(line)
     if (line.search(searchBarTxt.value) != -1) {
-      legit_lines.push(line)
+      document.getElementById(line_index).classList.add("highlighted");
+      console.log(document.getElementById(line_index).classList)
     }
   }
-  console.log(legit_lines)
+
   searchBarTxt.value = null;
 }
 
@@ -63,7 +66,6 @@ function updateLines(text) {
   for (let i = 0; i < text.length; i++) {
       if (text[i] == "\n") {
         lines.push(line);
-        console.log(line);
         line = "";
       }
     // We don't want the return characters
@@ -74,12 +76,9 @@ function updateLines(text) {
   lines.push(line);
   let newHTML = "";
   for (lineIndex in lines) {
-    newHTML += "<a id=" + lineIndex + ">" + lines[lineIndex] + "<a>";
-    console.log(newHTML);
+    newHTML += "<a id= " + lineIndex + " class=line>" + lines[lineIndex] + "<a>";
   }
-  console.log(newHTML);
-  document.getElementById("output").innerHTML += newHTML;
-  console.log(lines);
+  document.getElementById("output").innerHTML = newHTML;
 }
 
 //reading a file
@@ -89,9 +88,7 @@ document.getElementById('inputfile')
   
   var fr=new FileReader();
   fr.onload=function(){
-    console.log(lines);
     updateLines(fr.result); 
-    console.log("called");
   }
   
   fr.readAsText(this.files[0]);
