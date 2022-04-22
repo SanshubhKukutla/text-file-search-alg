@@ -14,9 +14,9 @@ async function getFile() {
   }
 }
 
-var txtFile = document
-  .getElementById("open_file_explorer")
-  .addEventListener("click", getFile);
+// var txtFile = document
+//   .getElementById("open_file_explorer")
+//   .addEventListener("click", getFile);
 
 //code for search btn
 var searchBarTxt = document.getElementById("searchBar");
@@ -30,6 +30,7 @@ function check(e){
 
 
 function searchActivity(){
+  console.log(searchBarTxt.value);
   clearInput();
   searchFile();
 }
@@ -43,7 +44,7 @@ function clearInput() {
     let line = lines[lineIndex]
     if (line.search(searchBarTxt.value) != -1) {
       legitLines.push(lineIndex);
-      newHTML += "<a id= \"" + lineIndex + "\" class=\"line highlighted\">" + lines[lineIndex] + "<a>";
+      newHTML += "<a id= \"" + lineIndex + "\" class=\"line-highlighted\">" + lines[lineIndex] + "<a>";
 
     }
 
@@ -68,6 +69,7 @@ function updateLines(text) {
   lines = [];
   let line = "";
   for (let i = 0; i < text.length; i++) {
+      
       if (text[i] == "\n") {
         lines.push(line);
         line = "";

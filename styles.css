@@ -1,6 +1,26 @@
 #searchBar{
 
-  /* width: 50%; */
+  width: 50%;
   font-family: kumbah-sans;
+  height: 25px;
 
+}
+
+#container{
+  width: 500px;
+  height: 500px;
+}
+
+.line, .line-highlighted{
+    width: 200px;
+    font-family: kumbah-sans;
+    font-size: large;
+    height: fit-content;
+    margin: 10px auto;
+    display: block;
+}
+
+
+.line-highlighted{
+  background-color: #FFFF00;
 }
