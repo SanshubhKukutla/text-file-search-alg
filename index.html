@@ -2,25 +2,28 @@
 <!--File search algorithm with GUI-->
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
+    <!-- <meta charset="UTF-8" /> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>search alg</title>
   </head>
   <body>
-    <button type="button" id="open_file_explorer" class="button">
-      select txt file
-    </button>
+    <!-- <button type="button" id="open_file_explorer" class="button"> -->
+      <!-- select txt file -->
+    <!-- </button> -->
+    <input type="file" name="inputfile" id="inputfile">
     <div class="search">
       <input type="text" placeholder="Search.." id="searchBar" />
       <button onclick="searchActivity()" type="button" id="searchButton">
         Enter
       </button>
-      <input type="file" name="inputfile" id="inputfile">
       <br>
     <pre id="output"></pre>
     </div>
-    <!-- <link rel="stylesheet" href="styles.css" />     -->
+    <link rel="stylesheet" href="styles.css" />    
     <script src="script.js"></script>
   </body>
 </html>
