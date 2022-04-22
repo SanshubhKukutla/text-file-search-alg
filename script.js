@@ -36,7 +36,18 @@ function searchActivity(){
 }
 
 function clearInput() {
+
   console.log(searchBarTxt.value);
+  legit_lines = []
+
+  for (line_index in lines) {
+    let line = lines[line_index]
+    console.log(line)
+    if (line.search(searchBarTxt.value) != -1) {
+      legit_lines.push(line)
+    }
+  }
+  console.log(legit_lines)
   searchBarTxt.value = null;
 }
 
@@ -45,7 +56,8 @@ function searchFile() {
   //console.log("searching");
 }
 
-let lines = []
+var lines = []
+var legit_lines = []
 function updateLines(text) {
   let line = "";
   for (let i = 0; i < text.length; i++) {
@@ -59,6 +71,14 @@ function updateLines(text) {
         line += text[i];
       }
   }
+  lines.push(line);
+  let newHTML = "";
+  for (lineIndex in lines) {
+    newHTML += "<a id=" + lineIndex + ">" + lines[lineIndex] + "<a>";
+    console.log(newHTML);
+  }
+  console.log(newHTML);
+  document.getElementById("output").innerHTML += newHTML;
   console.log(lines);
 }
 
@@ -69,8 +89,6 @@ document.getElementById('inputfile')
   
   var fr=new FileReader();
   fr.onload=function(){
-    document.getElementById('output')
-    .textContent=fr.result;
     console.log(lines);
     updateLines(fr.result); 
     console.log("called");
